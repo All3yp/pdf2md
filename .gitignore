@@ -12,3 +12,4 @@ output/
 uv.lock
 input/
 output/
+.commandcode
