@@ -1,0 +1,47 @@
+[project]
+name = "pdf2md"
+version = "0.1.0"
+description = "Convert any PDF paper to clean Markdown: tables become real Markdown tables, and non-article images (author photos, logos, icons) are filtered out."
+readme = "README.md"
+authors = [
+	{ name = "All3yp", email = "29764688+All3yp@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+	"pymupdf>=1.24.0",
+	"openai>=1.30.0",
+	"python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+	"pytest>=8.2.0",
+	"ruff>=0.5.0",
+	"mypy>=1.10.0",
+]
+
+[project.scripts]
+pdf2md = "pdf2md.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.15,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
